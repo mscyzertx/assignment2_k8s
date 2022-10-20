@@ -6,7 +6,11 @@ spec:
   containers:
   - name: mysql
     image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-mysql:v1.0
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: db123
     ports:
     - containerPort: 3306
       protocol: TCP
+  restartPolicy: Always
 
