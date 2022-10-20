@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employees
+  namespace: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: employees
+  template:
+    metadata:
+      labels:
+        name: employeees
+    spec:
+      containers:
+      - name: e-webapp
+        image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0
+        
