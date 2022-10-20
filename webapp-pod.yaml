@@ -7,10 +7,14 @@ spec:
   - name: webapp
     image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0
     env:
-      - DBHOST : 172.18.0.2
-      - DBPORT : 3306
-      - DBUSER : root
-      - DBPWD : pw
+      - name: DBHOST 
+        value: "172.18.0.2"
+      - name: DBPORT
+        value: "3306"
+      - name: DBUSER
+        value: "root"
+      - name: DBPWD 
+        value: "pw"
     ports: 
     - containerPort: 8080
       protocol: TCP
