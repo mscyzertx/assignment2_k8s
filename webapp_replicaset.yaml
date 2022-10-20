@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: employees
+  name: e-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    ports:
+      - containerPort: 8080
+        protocol: TCP
+    spec:
+      containers:
+        - env:
+            - name: DBHOST
+              value: 172.18.0.2
+            - name: DBPORT
+              value: '3306'
+            - name: DBUSER
+              value: root
+            - name: DBPWD
+              value: pw
+          image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0'
+          name: e-webapp
