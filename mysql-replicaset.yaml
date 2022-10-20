@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: mysql
+  name: e-mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    ports:
+      - containerPort: 3306
+        protocol: TCP
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_APP_PASSWORD
+              value: db123
+          image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-mysql:v1.0'
+          name: mysql
