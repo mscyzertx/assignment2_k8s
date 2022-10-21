@@ -13,19 +13,19 @@ spec:
     metadata:
       labels:
         app: employees
-    ports:
-      - containerPort: 8080
-        protocol: TCP
     spec:
       containers:
-        - env:
-            - name: DBHOST
-              value: 172.18.0.2
-            - name: DBPORT
-              value: '3306'
-            - name: DBUSER
-              value: root
-            - name: DBPWD
-              value: pw
-          image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0'
-          name: e-webapp
+      - name: e-webapp
+        image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0'
+        env:
+        - name: DBHOST
+          value: 10.244.0.7
+        - name: DBPORT
+          value: '3306'
+        - name: DBUSER
+          value: root
+        - name: DBPWD
+          value: db123
+        ports:
+        - containerPort: 8080
+          protocol: TCP
