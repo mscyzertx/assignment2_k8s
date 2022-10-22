@@ -11,18 +11,14 @@ spec:
   template:
     metadata:
       labels:
-        name: employeees
-    spec:
-      containers:
-      - name: e-webapp
-        image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0
+        name: employees
     spec:
       containers:
       - name: e-webapp
         image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-webapp:v1.0
         env:
         - name: DBHOST 
-          value: 172.17.0.2
+          value: 10.244.0.7
         - name: DBPORT
           value: "3306"
         - name: DBUSER
@@ -32,4 +28,3 @@ spec:
         ports: 
         - containerPort: 8080
           protocol: TCP
-        
