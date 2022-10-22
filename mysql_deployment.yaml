@@ -14,16 +14,12 @@ spec:
         name: mysql
     spec:
       containers:
-      - name: mysql
-        image: 670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-mysql:v1.0
+      - image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-mysql:v1.0'
+        name: mysql
+        env:
+        - name: MYSQL_APP_PASSWORD
+          value: db123
         ports:
-      - containerPort: 3306
-        protocol: TCP
-    spec:
-      containers:
-        - env:
-            - name: MYSQL_APP_PASSWORD
-              value: db123
-          image: '670435616773.dkr.ecr.us-east-1.amazonaws.com/assignment2-mysql:v1.0'
-          name: mysql
-        
+        - containerPort: 3306
+          protocol: TCP
+          
